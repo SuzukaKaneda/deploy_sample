@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:alert] = "ログインできません"
-      render 'new'
+      render :new, status: :unprocessable_entity
     end
   end
 
