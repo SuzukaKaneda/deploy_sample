@@ -2,15 +2,16 @@
 
 <% content_for :title, "Posts" %>
 
-<h1>Posts</h1>
+<div class="font-black color">
+<h1>投稿一覧</h1>
+</div>
 
-<div id="posts">
+<div class="flex justify-center">
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "look this post", post %>
-    </p>
+   
   <% end %>
+  
 </div>
 
 <%= link_to "New post", new_post_path %>
