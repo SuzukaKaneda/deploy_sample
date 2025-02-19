@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         format.json { render json: { redirect_url: root_url } } # JSONリクエストの場合
       end
     else
+      flash[:alert] = "ログインできません"
       render 'new'
     end
   end
