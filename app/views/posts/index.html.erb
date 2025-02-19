@@ -1,3 +1,9 @@
+<% if flash[:success] %>
+        <div class="alert alert-success">
+            <%= flash[:success] %>
+        </div>
+    <% end %>
+    
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Posts" %>
@@ -15,3 +21,5 @@
 </div>
 
 <%= link_to "New post", new_post_path %>
+<%= link_to 'ログイン', login_path, class: 'btn btn-primary' %>
+<%= link_to 'ログアウト', logout_path, class: 'btn btn-primary' %>
