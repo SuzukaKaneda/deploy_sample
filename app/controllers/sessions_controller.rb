@@ -4,14 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password_digest])
+    if user && user.authenticate(params[:session][:password])
       log_in user
       flash[:success] = "ログインしました"
-      
-      respond_to do |format|
-        format.html { redirect_to root_url } # HTMLリクエストの場合
-        format.json { render json: { redirect_url: root_url } } # JSONリクエストの場合
-      end
+      redirect_to root_url
     else
       flash[:alert] = "ログインできません"
       render :new, status: :unprocessable_entity
