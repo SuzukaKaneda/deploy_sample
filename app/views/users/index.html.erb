@@ -2,6 +2,8 @@
 <% @users.each do |user| %>
     <h2><%= user.name %></h2>
     <p><%= user.email %></p>
+    <%= button_to "削除", user_path(user), method: :delete %>
+    <%= link_to 'ユーザー詳細', user_path(user), class: 'btn btn-primary' %>
     <br>
   <% end %>
   
