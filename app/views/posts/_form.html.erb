@@ -11,13 +11,17 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="my-5">
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div>
+  <div class="my-5">
     <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+  <%= form.label :image %>
+  <%= form.file_field :post_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div>
