@@ -21,18 +21,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     process resize_and_pad: [1600, 900, '#f5ebdc', 'Center']
   end
 
-  process :convert_to_webp
-
-  def convert_to_webp
-    manipulate! do |img|
-      img.format('webp')
-      img
-    end
-  end
   
-  def filename
-    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
-  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
