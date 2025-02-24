@@ -20,7 +20,9 @@ class PostImageUploader < CarrierWave::Uploader::Base
   version :index_size do
     process resize_and_pad: [1600, 900, '#f5ebdc', 'Center']
   end
-
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
   
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
