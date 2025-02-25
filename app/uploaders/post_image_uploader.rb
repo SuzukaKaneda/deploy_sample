@@ -2,7 +2,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -11,6 +11,10 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def extension_allowlist
+    %w[jpg jpeg webp png]
   end
 
   def default_url
