@@ -23,6 +23,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
 
   version :index_size do
     process resize_and_pad: [1600, 900, '#f5ebdc', 'Center']
+    process convert: 'webp'
   end
   def filename
     super.chomp(File.extname(super)) + '.webp' if original_filename.present?
