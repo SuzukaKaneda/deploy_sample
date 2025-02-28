@@ -22,9 +22,17 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
+  
     respond_to do |format|
       if @post.save
+        uploaded_image = Cloudinary::Uploader.upload(params[:post][:post_image].tempfile.path)
+        combined_image_url = Cloudinary::Utils.cloudinary_url(uploaded_image['url'], 
+          transformation: [
+            { overlay: "text:Arial_200_bold:#{@post.title}", gravity: "south", y: 20 }
+          ])
+  
+        @post.save!(post_image: combined_image_url)  
+        # 本当はupdate!を使うべきだが保存されない‥
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
