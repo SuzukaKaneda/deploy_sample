@@ -37,7 +37,8 @@ class PostsController < ApplicationController
              }
           ])
           cloudinary_url = uploaded_image["url"]
-          @post.post_image = cloudinary_url
+          @post.remote_post_image_url = cloudinary_url
+          
         @post.save!  # 合成画像のURLを保存
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
