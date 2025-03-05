@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label :"タイトル", style: "display: block" %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="my-5">
-    <%= form.label :content, style: "display: block" %>
+    <%= form.label :"内容", style: "display: block" %>
     <%= form.text_field :content, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="my-5">
-  <%= form.label :image %>
+  <%= form.label :"画像" %>
   <%= form.file_field :post_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+  <%= form.label :tag_id, "タグ", style: "display: block" %>
+  <%= form.collection_select :tag_id, Tag.all, :id, :name, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
   </div>
 
   <div>

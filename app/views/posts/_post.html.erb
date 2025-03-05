@@ -1,12 +1,14 @@
 <div id="<%= dom_id post %>">
   <div class="flex flex-wrap justify-center">
     <div class="bg-red-50 shadow-md rounded-lg m-4 p-6 max-w-xs">
-      <h2><%= post.title %></h2>
+    <p><%= cl_image_tag(post.post_image) %></p>
       <p><%= post.content %></p>
-      <p><%= cl_image_tag(post.post_image) %></p>
+      <% post.tags.each do |tag| %>
+        <p><%= tag.name %></p>
+      <% end %>
       <p>
       <%= link_to "look this post", post %>
-    </p>
+      </p>
     </div>
   </div>
 </div>

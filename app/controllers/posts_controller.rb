@@ -3,7 +3,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    if params[:tag_id]
+      @posts = Post.with_tag(params[:tag_id])
+    else
+      @posts = Post.all
+    end
+    @tags = Tag.all
   end
 
   # GET /posts/1 or /posts/1.json
@@ -40,6 +45,11 @@ class PostsController < ApplicationController
           @post.remote_post_image_url = cloudinary_url
           
         @post.save!  # 合成画像のURLを保存
+
+        if params[:post][:tag_id].present?
+          PostTag.create(post_id: @post.id, tag_id: params[:post][:tag_id])
+        end
+
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
