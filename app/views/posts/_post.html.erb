@@ -1,7 +1,7 @@
 <div id="<%= dom_id post %>">
   <div class="flex flex-wrap justify-center">
     <div class="bg-red-50 shadow-md rounded-lg m-4 p-6 max-w-xs">
-    <p><%= cl_image_tag(post.post_image) %></p>
+    <p><p><%= cl_image_tag(post.post_image.url(:index_size)) %></p></p>
       <p><%= post.content %></p>
       <% post.tags.each do |tag| %>
         <p><%= tag.name %></p>
