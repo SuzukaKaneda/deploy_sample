@@ -1,17 +1,8 @@
 class PostImageUploader < CarrierWave::Uploader::Base
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  
+  include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
   
-  # Choose what kind of storage to use for this uploader:
-  # storage :file
-  # storage :fog
-
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
   
-
   def extension_allowlist
     %w[jpg jpeg webp png]
   end
@@ -20,7 +11,13 @@ class PostImageUploader < CarrierWave::Uploader::Base
     'board_placeholder'
   end
 
-  
+  version :index_size do
+    process resize_and_pad: [1600, 900, '#f5ebdc', 'Center']
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
   
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

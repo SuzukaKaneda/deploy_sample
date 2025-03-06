@@ -30,11 +30,19 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        
         uploaded_image = Cloudinary::Uploader.upload(params[:post][:post_image].tempfile.path, 
-          transformation: [
+        transformation: [
+          {
+            width: 800,  # 幅を800pxにリサイズ
+            height: 600, # 高さを600pxにリサイズ
+            crop: "fit",  # 縦横比を維持しつつフィットさせる
+            background: "white" 
+          },
             {
             overlay: "text:Arial_200_bold:#{@post.title}", # テキストのオーバーレイ
+            width: 400, 
+            height: 200,
+            crop: "scale",
             color: "orange", # テキストの色
             gravity: "north_west", # テキストの位置（左上）
             y: 10, # テキストのy位置の微調整
