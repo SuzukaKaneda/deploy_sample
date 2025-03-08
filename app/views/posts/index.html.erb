@@ -27,12 +27,16 @@
 <%= link_to 'ユーザー登録', users_new_path, class: 'btn btn-primary' %>
 <%= link_to 'ユーザー一覧', users_path, class: 'btn btn-primary' %>
 <%= link_to 'ポイント', users_path, class: 'btn btn-primary' %>
-<ul>
-<%= link_to '全ての投稿', posts_path, class: 'btn btn-primary' %>
-</ul>
-  <ul>
-    <% @tags.each do |tag| %>
-      <li><%= link_to "#{tag.name}", posts_path(tag_id: tag.id) %></li>
-    <% end %>
-  </ul>
+<div class = "content object-right">
+  <div class = "text-left">
+    <ul>
+      <%= link_to '全ての投稿', posts_path, class: 'btn btn-primary' %>
+    </ul>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li><%= link_to "#{tag.name}", posts_path(tag_id: tag.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
