@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "users/show"
   get "users/new"
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  get '/logout',  to: 'sessions#destroy'
+  
+  
 
   resources :users do
     resources :points, only: [:create]

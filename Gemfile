@@ -41,6 +41,7 @@ gem 'mini_magick'
 gem 'cloudinary'
 gem 'pry-byebug'
 gem 'devise'
+gem 'importmap-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
