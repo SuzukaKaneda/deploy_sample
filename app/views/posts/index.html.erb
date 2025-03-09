@@ -22,17 +22,21 @@
 </div>
 
 <%= link_to "New post", new_post_path %>
-<%= link_to 'ログイン', login_path, class: 'btn btn-primary' %>
-<%= link_to 'ログアウト', logout_path, class: 'btn btn-primary' %>
-<%= link_to 'ユーザー登録', users_new_path, class: 'btn btn-primary' %>
+<%= link_to 'ログイン', user_session_path, class: 'btn btn-primary' %>
+<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<%= link_to 'ユーザー登録', new_user_path, class: 'btn btn-primary' %>
 <%= link_to 'ユーザー一覧', users_path, class: 'btn btn-primary' %>
 <%= link_to 'ポイント', users_path, class: 'btn btn-primary' %>
-<ul>
-<%= link_to '全ての投稿', posts_path, class: 'btn btn-primary' %>
-</ul>
-  <ul>
-    <% @tags.each do |tag| %>
-      <li><%= link_to "#{tag.name}", posts_path(tag_id: tag.id) %></li>
-    <% end %>
-  </ul>
+<div class = "content object-right">
+  <div class = "text-left">
+    <ul>
+      <%= link_to '全ての投稿', posts_path, class: 'btn btn-primary' %>
+    </ul>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li><%= link_to "#{tag.name}", posts_path(tag_id: tag.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
